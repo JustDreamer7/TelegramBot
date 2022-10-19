@@ -1,6 +1,4 @@
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-# Press Ctrl+F8 to toggle the breakpoint.
+
 import geopy
 import telebot
 import requests
@@ -14,7 +12,7 @@ from binance_exchange_rate import ExchangeRate
 
 bot = telebot.TeleBot(telegram_key)
 chg_rate = ExchangeRate(binance_api_key, binance_secret_key)
-# test_bot = TelegramClient('bot', 17091113, '03e6bcd5c30d2d1536772bfad2bd363d').start(bot_token=telegram_key)
+
 
 response = requests.get('https://www.cbr-xml-daily.ru/daily_json.js')
 unparsed_content = response.json()
@@ -149,31 +147,3 @@ def geopos(message):
 
 
 bot.polling(non_stop=True)
-# class TgBot:
-#     def __init__(self, bot, test):
-#         self.bot = bot
-#         self.test = test
-#
-#     bot = telebot.TeleBot(telegram_key)
-#     test = ExchangeRate(binance_api_key, binance_secret_key)
-#     @bot.message_handler(commands=['start'])
-#     def send_welcome(self, message, bot):
-#         markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
-#         item1 = telebot.types.KeyboardButton("Курс валют")
-#         item2 = telebot.types.KeyboardButton("В разработке")
-#         markup.add(item1)
-#         markup.add(item2)
-#         bot.send_message(message.chat.id, "Приветствую, делайте со мной, что хотите", reply_markup=markup)
-#
-#     @bot.message_handler(content_types=["text"])
-#     def handle_text(self, message, bot, test):
-#         print(message)
-#         if message.text.strip() == 'Курс валют':
-#             answer = test.exchange_rate()
-#             bot.send_message(message.chat.id, answer)
-#
-#
-# test = TgBot(telebot.TeleBot(telegram_key),ExchangeRate(binance_api_key, binance_secret_key))
-# print(type(test.bot))
-# print(test.bot)
-# test.bot.polling(none_stop=True)
